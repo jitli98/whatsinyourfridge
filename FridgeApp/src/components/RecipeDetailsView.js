@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, FlatList } from "react-native";
 import RecipeSummayBox from "../components/RecipeSummaryBox";
 import RecipeSubsection from "../components/RecipeSubsection";
 
-export default class RecipeDetails extends React.Component {
+export default class RecipeDetailsView extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -33,7 +33,7 @@ export default class RecipeDetails extends React.Component {
     let ingredientBody = (
       <FlatList
         data={ingredients}
-        renderItem={({ item }) => <Text>{item}</Text>}
+        renderItem={({ item }) => <Text key={item}>{item}</Text>}
       />
     );
     return <RecipeSubsection name="Ingredients" body={ingredientBody} />;
@@ -43,7 +43,7 @@ export default class RecipeDetails extends React.Component {
     let directionBody = (
       <FlatList
         data={directions}
-        renderItem={({ item }) => <Text>{item}</Text>}
+        renderItem={({ item }) => <Text key={item}>{item}</Text>}
       />
     );
     return <RecipeSubsection name="Directions" body={directionBody} />;
@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
     marginTop: 25,
     flex: 1,
     backgroundColor: "#fff",
-    width: "80%"
+    width: "80%",
+    flexDirection: 'column'
   },
   header: {
     flex: 1

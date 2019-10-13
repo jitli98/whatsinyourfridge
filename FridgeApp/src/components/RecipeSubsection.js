@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 
 export default function RecipeSubsection({name, body}) {
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.header}>{name}</Text>
       {body}
     </View>
@@ -12,7 +12,13 @@ export default function RecipeSubsection({name, body}) {
 
 
 const styles = StyleSheet.create({
+  container: {
+    margin: 4
+  },
   header: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 24,
+    marginBottom: 8,
+    marginTop: 8
   }
 });
