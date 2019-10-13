@@ -1,22 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+
+import RecipeResults from './src/screens/RecipeResults';
 import RecipeDetails from './src/screens/RecipeDetails';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <RecipeDetails
-        title="Buffalo Chicken"
-        description="great" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
+const AppNavigator = createStackNavigator({
+  Results: {
+	  screen: RecipeResults,
+	},
+	Details: {
+		screen: RecipeDetails,
+	},
+}, {
+	initialRouteName: 'Results',
 });
+
+const App = createAppContainer(AppNavigator);
+
+export default App;
