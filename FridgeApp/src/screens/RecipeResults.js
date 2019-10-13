@@ -1,33 +1,50 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { FlatList, View, TouchableHighlight } from 'react-native';
+import Button from '../components/Button';
+
+const recipeData = [
+		{
+			title: "Buffalo Chicken",
+			description: "great",
+			ingredients: "onions, garlic",
+		},
+		{
+			title: "Brownies",
+			description: "has chocolate",
+			ingredients: "chocolate",
+		},
+	];
+
 
 class RecipeResults extends Component {
 	static navigationOptions = {title: 'Results'};
 
+	_keyExtractor = (item, index) => index.toString();
+
+	_renderItem = ({item, index}) => {
+		return (
+			<Button
+				onPress={this._onPress}
+				data={item}
+			/>
+		);
+	};
+
+	_onPress = item => {
+		console.log(item);
+	}
+
 	render() {
 		return (
 			<View>
-				<View>
-					<Text>picture</Text>
-				</View>
-				<View>
-					<Text style={styles.title}>Buffalo Chicken</Text>
-					<Text style={styles.description}>great</Text>
-					<Text>green onions, garlic</Text>
-					<Text>put stuff in oven, take out of oven</Text>
-				</View>
+				<FlatList
+					data={recipeData}
+					keyExtractor={this._keyExtractor}
+					renderItem={this._renderItem}
+				/>
 			</View>
 		);
 	}
 }
 
 export default RecipeResults;
-
-const styles = StyleSheet.create({
-	title: {
-		fontSize: 20,
-	},
-	description: {
-		fontSize: 10,
-	},
-});
