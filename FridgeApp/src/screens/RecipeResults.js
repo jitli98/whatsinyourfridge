@@ -32,6 +32,9 @@ class RecipeResults extends Component {
 
 	_onPress = item => {
 		console.log(item);
+		this.props.navigation.navigate(
+			'Details', {item: item}
+		);
 	}
 
 	render() {

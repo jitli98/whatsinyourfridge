@@ -16,7 +16,7 @@ const AppNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: "Details"
+    initialRouteName: "Results"
   }
 );
 
