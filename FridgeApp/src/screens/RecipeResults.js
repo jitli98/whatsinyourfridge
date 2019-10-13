@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FlatList, View, TouchableHighlight, Text } from 'react-native';
 import Button from '../components/Button';
+import { BACKEND_URL } from '../constants';
 
 const recipeData = [
 		{
@@ -20,17 +21,19 @@ class RecipeResults extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { isLoading: true, data: null };
+		this.fetchResults;
 	}
 
 	static navigationOptions = {title: "Recipes"};
 
 	fetchResults = async () => {
-		const recipes = await fetch()
-			.then(response => response.json())
-			.then(json => this.setState({ 
-				isLoading: false,
-				data: json
-			}))
+		const recipes = await fetch(`${BACKEND_URL}/recipe`)
+		const recipeJson = await recipes.json();
+		console.log(recipeJson);
+		this.setState({
+			isLoading: false,
+			data: recipeJson
+		});
 	}
 
 	_keyExtractor = (item, index) => index.toString();
@@ -54,7 +57,7 @@ class RecipeResults extends Component {
 	render() {
 		return (
 			<View>
-				{!this.state.isLoading ? <View>
+				{this.state.isLoading ? <View>
 					<Text>Finding recipes</Text>
 				</View>
 				:
