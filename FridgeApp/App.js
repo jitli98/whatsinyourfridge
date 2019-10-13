@@ -5,6 +5,7 @@ import { createStackNavigator } from "react-navigation-stack";
 
 import RecipeResults from "./src/screens/RecipeResults";
 import RecipeDetails from "./src/screens/RecipeDetails";
+import Camera from "./src/screens/CameraScreen";
 
 const AppNavigator = createStackNavigator(
   {
@@ -13,10 +14,13 @@ const AppNavigator = createStackNavigator(
     },
     Details: {
       screen: RecipeDetails
+    },
+    Camera: {
+      screen: Camera
     }
   },
   {
-    initialRouteName: "Details"
+    initialRouteName: "Camera"
   }
 );
 
