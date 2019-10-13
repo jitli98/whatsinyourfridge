@@ -8,11 +8,13 @@ class RecipeResults extends Component {
 		return (
 			<View>
 				<View>
-					<Text>pictures</Text>
+					<Text>picture</Text>
 				</View>
 				<View>
-					<Text style={styles.title}>Buffalo Chicken Skillet</Text>
-					<Text style={styles.description}>Both simple and amazing, this is a family favorite!</Text>
+					<Text style={styles.title}>Buffalo Chicken</Text>
+					<Text style={styles.description}>great</Text>
+					<Text>green onions, garlic</Text>
+					<Text>put stuff in oven, take out of oven</Text>
 				</View>
 			</View>
 		);
