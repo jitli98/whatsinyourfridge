@@ -1,9 +1,9 @@
 import React from "react";
-import { ActivityIndicator } from "react-native";
+import { Text } from "react-native";
 import RecipeDetailsView from "../components/RecipeDetailsView";
-import { BACKEND_URL } from '../constants.js';
+import { BACKEND_URL } from "../constants.js";
 
-export default class RecipeDetailsScreen extends React.Component {
+export default class RecipeDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +16,7 @@ export default class RecipeDetailsScreen extends React.Component {
 
   render() {
     if (this.state.isLoading) {
-      return <ActivityIndicator size='large' color='#00ff00'/>;
+      return <Text>Loading...</Text>;
     } else {
       return (
         <RecipeDetailsView
@@ -33,8 +33,8 @@ export default class RecipeDetailsScreen extends React.Component {
     const resp = await fetch(`${BACKEND_URL}/ingredient`);
     const ingredientJson = await resp.json();
     this.setState({
-      isLoading: true,
-      ingredients: ingredientJson.map(i => i.name)
+      isLoading: false,
+      ingredients: ingredientJson.data.ingredients.map(i => i.name)
     });
   };
 }
