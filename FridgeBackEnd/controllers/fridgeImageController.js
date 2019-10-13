@@ -5,6 +5,7 @@ const googleVision = require('./../googlevision');
 exports.postImage = async (req, res) => {
     try {
         const labels = await googleVision.obtainLabels();
+        console.log(labels);
         // filter labels and store everything else in database
         res.status(200).json({
             status: 'success'
